@@ -13,12 +13,16 @@ import {
   TextField,
 } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState('');
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState('');
+
+  const darkMode = useSelector((state: any) => state.darkMode.darkMode);
 
   useEffect(() => {
     axios
@@ -53,70 +57,187 @@ const Home = () => {
     setSelectedRegion(e.target.value);
   };
   return (
-    <Container>
-      <Box
+    <Box
+      sx={{
+        backgroundColor: darkMode ? '#202c36' : '#fafafa',
+      }}
+    >
+      <Container
         sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          m: '25px 0px',
+          backgroundColor: darkMode ? '#202c36' : '#fafafa',
         }}
       >
-        <TextField
-          label="Search for a country..."
-          value={search}
-          onChange={handleSearchChange}
+        <Box
           sx={{
-            width: '255px',
-          }}
-        />
-        <FormControl
-          sx={{
-            width: '255px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            p: '25px 0px',
+            flexWrap: 'wrap',
           }}
         >
-          <InputLabel>Filter by region</InputLabel>
-          <Select
-            label="age"
-            value={selectedRegion}
-            onChange={handleRegionChange}
+          <TextField
+            label="Search for a country..."
+            InputLabelProps={{
+              style: {
+                color: darkMode ? '#fff' : '#000',
+              },
+            }}
+            InputProps={{
+              style: {
+                color: darkMode ? '#fff' : '#000',
+              },
+            }}
+            value={search}
+            onChange={handleSearchChange}
+            sx={{
+              width: '255px',
+              backgroundColor: darkMode ? '#2b3844' : '#fff',
+
+              '@media (max-width: 425px)': {
+                marginBottom: '40px',
+                width: '100%',
+              },
+            }}
+          />
+          <FormControl
+            sx={{
+              width: '255px',
+            }}
           >
-            <MenuItem value={'Africa'}>Africa</MenuItem>
-            <MenuItem value={'America'}>America</MenuItem>
-            <MenuItem value={'Asia'}>Asia</MenuItem>
-            <MenuItem value={'Europe'}>Europe</MenuItem>
-            <MenuItem value={'Oceania'}>Oceania</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
-      <Box>
-        <ImageList cols={4}>
-          {filteredCountries.map((country: any) => (
-            <ImageListItem key={country}>
-              <img src={country.flags.png} alt="" />
-              <Box
+            <InputLabel
+              sx={{
+                color: darkMode ? '#fff' : '#000',
+              }}
+            >
+              Filter by region
+            </InputLabel>
+            <Select
+              label="age"
+              value={selectedRegion}
+              onChange={handleRegionChange}
+              sx={{
+                backgroundColor: darkMode ? '#2b3844' : '#fff',
+                padding: '0px',
+                color: darkMode ? '#fff' : '#000',
+              }}
+            >
+              <MenuItem
+                value={'Africa'}
                 sx={{
-                  padding: '15px 0px 25px 10px',
-                  borderRadius: '5px',
+                  backgroundColor: darkMode ? '#2b3844' : '#fff',
+                  color: darkMode ? '#fff' : '#000',
                 }}
               >
-                <Typography
-                  sx={{
-                    fontWeight: 'bold',
-                    mb: '10px',
-                  }}
-                >
-                  {country.name.common}
-                </Typography>
-                <Typography>Population: {country.population}</Typography>
-                <Typography>Region: {country.region}</Typography>
-                <Typography>Capital: {country.capital}</Typography>
-              </Box>
-            </ImageListItem>
-          ))}
-        </ImageList>
-      </Box>
-    </Container>
+                Africa
+              </MenuItem>
+              <MenuItem
+                value={'Americas'}
+                sx={{
+                  backgroundColor: darkMode ? '#2b3844' : '#fff',
+                  color: darkMode ? '#fff' : '#000',
+                }}
+              >
+                Americas
+              </MenuItem>
+              <MenuItem
+                value={'Asia'}
+                sx={{
+                  backgroundColor: darkMode ? '#2b3844' : '#fff',
+                  color: darkMode ? '#fff' : '#000',
+                }}
+              >
+                Asia
+              </MenuItem>
+              <MenuItem
+                value={'Europe'}
+                sx={{
+                  backgroundColor: darkMode ? '#2b3844' : '#fff',
+                  color: darkMode ? '#fff' : '#000',
+                }}
+              >
+                Europe
+              </MenuItem>
+              <MenuItem
+                value={'Oceania'}
+                sx={{
+                  backgroundColor: darkMode ? '#2b3844' : '#fff',
+                  color: darkMode ? '#fff' : '#000',
+                }}
+              >
+                Oceania
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+        <Box>
+          <ImageList
+            cols={4}
+            sx={{
+              '@media (max-width: 425px)': {
+                display: 'flex',
+                flexDirection: 'column',
+              },
+            }}
+          >
+            {filteredCountries.map((country: any) => (
+              <Link
+                to={`/country/${country.name.common}`}
+                style={{
+                  textDecoration: 'none',
+                }}
+              >
+                <ImageListItem key={country.name.common}>
+                  <img src={country.flags.png} alt="" />
+                  <Box
+                    sx={{
+                      padding: '15px 0px 25px 10px',
+                      borderRadius: '5px',
+                      backgroundColor: darkMode ? '#2b3844' : '#fff',
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontWeight: 'bold',
+                        mb: '10px',
+                        color: darkMode ? '#fff' : '#000',
+                        fontSize: '18px',
+                      }}
+                    >
+                      {country.name.common}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: darkMode ? '#fff' : '#000',
+                        fontSize: '14px',
+                      }}
+                    >
+                      Population: {country.population}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: darkMode ? '#fff' : '#000',
+                        fontSize: '14px',
+                      }}
+                    >
+                      Region: {country.region}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: darkMode ? '#fff' : '#000',
+                        fontSize: '14px',
+                      }}
+                    >
+                      Capital: {country.capital}
+                    </Typography>
+                  </Box>
+                </ImageListItem>
+              </Link>
+            ))}
+          </ImageList>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 
