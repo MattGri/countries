@@ -25,6 +25,8 @@ const Home = () => {
   const darkMode = useSelector((state: any) => state.darkMode.darkMode);
 
   useEffect(() => {
+    document.title = 'Where in the world?';
+
     axios
       .get('https://restcountries.com/v3.1/all')
       .then((res) => {

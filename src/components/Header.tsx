@@ -43,7 +43,7 @@ const Header = () => {
           sx={{
             fontWeight: 700,
             color: darkMode ? '#fff' : '#000',
-
+            fontSize: '24px',
             '@media (max-width: 768px)': {
               fontSize: '14px',
             },
