@@ -10,9 +10,15 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleDarkMode } from '../store';
 
+interface RootState {
+  darkMode: {
+    darkMode: boolean;
+  };
+}
+
 const Header = () => {
   const dispatch = useDispatch();
-  const darkMode = useSelector((state: any) => state.darkMode.darkMode);
+  const darkMode = useSelector((state: RootState) => state.darkMode.darkMode);
 
   const handleDarkMode = () => {
     dispatch(toggleDarkMode());

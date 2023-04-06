@@ -4,29 +4,31 @@ import axios from 'axios';
 import { Box, Container, Typography, Avatar } from '@mui/material';
 import { useSelector } from 'react-redux';
 
+interface RootState {
+  darkMode: {
+    darkMode: boolean;
+  };
+}
+
 const Country = () => {
   const { name } = useParams();
 
   const [country, setCountry] = useState<any>([]);
 
-  const darkMode = useSelector((state: any) => state.darkMode.darkMode);
+  const darkMode = useSelector((state: RootState) => state.darkMode.darkMode);
 
   useEffect(() => {
     document.title = `${name} | Where in the world?`;
 
-    axios
-      .get(`https://restcountries.com/v3.1/name/${name}`)
-      .then((res) => {
-        setCountry(res.data[0]);
-        console.log(res.data[0]);
-      })
-      .catch((err) => console.log(err));
+    axios.get(`https://restcountries.com/v3.1/name/${name}`).then((res) => {
+      setCountry(res.data[0]);
+    });
   }, [name]);
 
   return (
     <Box
       sx={{
-        backgroundColor: darkMode ? '#1e1e1e' : '#fff',
+        backgroundColor: darkMode ? '#1e1e1e' : '#fafafa',
         height: '100vh',
       }}
     >

@@ -16,28 +16,43 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+interface Country {
+  name: {
+    common: string;
+  };
+  flags: {
+    png: string;
+  };
+  population: number;
+  region: string;
+  capital: string[];
+}
+
+interface RootState {
+  darkMode: {
+    darkMode: boolean;
+  };
+}
+
 const Home = () => {
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState<Country[]>([]);
   const [search, setSearch] = useState('');
-  const [filteredCountries, setFilteredCountries] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [selectedRegion, setSelectedRegion] = useState('');
 
-  const darkMode = useSelector((state: any) => state.darkMode.darkMode);
+  const darkMode = useSelector((state: RootState) => state.darkMode.darkMode);
 
   useEffect(() => {
     document.title = 'Where in the world?';
 
-    axios
-      .get('https://restcountries.com/v3.1/all')
-      .then((res) => {
-        setCountries(res.data);
-        setFilteredCountries(res.data);
-      })
-      .catch((err) => console.log(err));
+    axios.get<Country[]>('https://restcountries.com/v3.1/all').then((res) => {
+      setCountries(res.data);
+      setFilteredCountries(res.data);
+    });
   }, []);
 
   useEffect(() => {
-    const filteredCountries = countries.filter((country: any) => {
+    const filteredCountries = countries.filter((country: Country) => {
       return country.name.common.toLowerCase().includes(search.toLowerCase());
     });
     setFilteredCountries(filteredCountries);
@@ -134,13 +149,13 @@ const Home = () => {
                 Africa
               </MenuItem>
               <MenuItem
-                value={'Americas'}
+                value={'America'}
                 sx={{
                   backgroundColor: darkMode ? '#2b3844' : '#fff',
                   color: darkMode ? '#fff' : '#000',
                 }}
               >
-                Americas
+                America
               </MenuItem>
               <MenuItem
                 value={'Asia'}
@@ -182,7 +197,7 @@ const Home = () => {
               },
             }}
           >
-            {filteredCountries.map((country: any) => (
+            {filteredCountries.map((country: Country) => (
               <Link
                 to={`/country/${country.name.common}`}
                 style={{
