@@ -11,7 +11,7 @@ The application displays countries. You can search for a specific country or dis
 ![image](https://user-images.githubusercontent.com/61913031/230574499-8294b0a0-413e-411b-811c-b176c2916b44.png)
 ![image](https://user-images.githubusercontent.com/61913031/230574547-cd8472a9-d13f-4c1f-82d1-2cde5e5f00b6.png)
 ![image](https://user-images.githubusercontent.com/61913031/230574577-cf58a2f2-d575-49ca-8adb-e5783b7da469.png)
-![image](https://user-images.githubusercontent.com/61913031/230574670-a67f4f8b-0a00-4103-9461-a65fa7bc2e85.png)
+![image](https://user-images.githubusercontent.com/61913031/230581489-8daa15f4-88fe-4008-b672-c27e5d9b9c17.png)
 
 
 # Issues 🔍
