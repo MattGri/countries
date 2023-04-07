@@ -36,6 +36,7 @@ const Country = () => {
         sx={{
           '@media (max-width: 1024px)': {
             padding: '0px 20px',
+            width: '60%',
           },
         }}
       >
@@ -54,12 +55,9 @@ const Country = () => {
               fontSize: '16px',
               '@media (max-width: 1024px)': {
                 fontSize: '14px',
-                marginLeft: '230px',
               },
 
-              '@media (max-width: 768px)': {
-                marginLeft: '40px',
-              },
+              '@media (max-width: 768px)': {},
             }}
           >
             Back
@@ -71,7 +69,6 @@ const Country = () => {
             flexWrap: 'wrap',
             '@media (max-width: 1024px)': {
               flexDirection: 'column',
-              textAlign: 'center',
             },
           }}
         >
@@ -81,15 +78,20 @@ const Country = () => {
                 src={country.flags.png}
                 alt=""
                 sx={{
-                  width: '560px',
+                  width: '100%',
                   height: '482px',
                   borderRadius: '10px',
                   display: 'block',
                   margin: '0px auto',
 
                   '@media (max-width: 768px)': {
-                    width: '90%',
-                    height: '229px',
+                    width: '100%',
+                    height: 'auto',
+                    marginBottom: '50px',
+                  },
+
+                  '@media (max-width: 425px)': {
+                    marginBottom: '0px',
                   },
                 }}
               />
