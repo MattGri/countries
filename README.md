@@ -1,46 +1,23 @@
-# Getting Started with Create React App
+# Project Overview 🎉
+The application displays countries. You can search for a specific country or display countries that are in a particular continent. Additionally, clicking on a specific country will display detailed information about that country.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Technologies 🔧
 
-## Available Scripts
+- materialUI
+- typescript
+- react 
 
-In the project directory, you can run:
+# Screenshots 📺
+![image](https://user-images.githubusercontent.com/61913031/230574499-8294b0a0-413e-411b-811c-b176c2916b44.png)
+![image](https://user-images.githubusercontent.com/61913031/230574547-cd8472a9-d13f-4c1f-82d1-2cde5e5f00b6.png)
+![image](https://user-images.githubusercontent.com/61913031/230574577-cf58a2f2-d575-49ca-8adb-e5783b7da469.png)
+![image](https://user-images.githubusercontent.com/61913031/230574670-a67f4f8b-0a00-4103-9461-a65fa7bc2e85.png)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Issues 🔍
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If you have any issues, please let me know on mateusz.grzybowski98@gmail.com
 
-### `npm test`
+# Live 📍
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://tiny-starship-51b4a5.netlify.app/
