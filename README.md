@@ -3,9 +3,10 @@ The application displays countries. You can search for a specific country or dis
 
 # Technologies 🔧
 
-- materialUI
-- typescript
-- react 
+- Typescript
+- React
+- Redux
+- MaterialUI
 
 # Screenshots 📺
 ![image](https://user-images.githubusercontent.com/61913031/230574499-8294b0a0-413e-411b-811c-b176c2916b44.png)
@@ -20,4 +21,4 @@ If you have any issues, please let me know on mateusz.grzybowski98@gmail.com
 
 # Live 📍
 
-https://tiny-starship-51b4a5.netlify.app/
+You can visit website here: https://tiny-starship-51b4a5.netlify.app/
