@@ -6,6 +6,7 @@ import {
   FormControlLabel,
   Switch,
   Box,
+  useTheme,
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleDarkMode } from '../store';
@@ -19,6 +20,7 @@ interface RootState {
 const Header = () => {
   const dispatch = useDispatch();
   const darkMode = useSelector((state: RootState) => state.darkMode.darkMode);
+  const theme = useTheme();
 
   const handleDarkMode = () => {
     dispatch(toggleDarkMode());
@@ -27,7 +29,9 @@ const Header = () => {
   return (
     <Box
       sx={{
-        backgroundColor: darkMode ? '#2b3844' : '#fff',
+        backgroundColor: darkMode
+          ? theme.palette.primary.main
+          : theme.palette.background.default,
       }}
     >
       <Container
@@ -36,7 +40,9 @@ const Header = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: '15px 0px',
-          backgroundColor: darkMode ? '#2b3844' : '#fff',
+          backgroundColor: darkMode
+            ? theme.palette.primary.main
+            : theme.palette.background.default,
 
           '@media (max-width: 768px)': {
             justifyContent: 'space-evenly',
@@ -48,7 +54,9 @@ const Header = () => {
           component="h1"
           sx={{
             fontWeight: 700,
-            color: darkMode ? '#fff' : '#000',
+            color: darkMode
+              ? theme.palette.primary.contrastText
+              : theme.palette.text.primary,
             fontSize: '24px',
             '@media (max-width: 768px)': {
               fontSize: '14px',
@@ -65,7 +73,9 @@ const Header = () => {
                 <Typography
                   variant="body2"
                   sx={{
-                    color: darkMode ? '#fff' : '#000',
+                    color: darkMode
+                      ? theme.palette.primary.contrastText
+                      : theme.palette.text.primary,
                     '@media (max-width: 768px)': {
                       fontSize: '12px',
                     },
@@ -77,6 +87,9 @@ const Header = () => {
                 <Typography
                   variant="body2"
                   sx={{
+                    color: darkMode
+                      ? theme.palette.primary.contrastText
+                      : theme.palette.text.primary,
                     '@media (max-width: 768px)': {
                       fontSize: '12px',
                     },

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { Box, Container, Typography, Avatar } from '@mui/material';
+import { Box, Container, Typography, Avatar, useTheme } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 interface RootState {
@@ -16,6 +16,7 @@ const Country = () => {
   const [country, setCountry] = useState<any>([]);
 
   const darkMode = useSelector((state: RootState) => state.darkMode.darkMode);
+  const theme = useTheme();
 
   useEffect(() => {
     document.title = `${name} | Where in the world?`;
@@ -28,7 +29,9 @@ const Country = () => {
   return (
     <Box
       sx={{
-        backgroundColor: darkMode ? '#1e1e1e' : '#fafafa',
+        backgroundColor: darkMode
+          ? theme.palette.primary.main
+          : theme.palette.background.default,
         height: '100vh',
       }}
     >
@@ -46,7 +49,9 @@ const Country = () => {
             textDecoration: 'none',
             margin: '45px 0px 50px 0px',
             display: 'inline-block',
-            color: darkMode ? '#fff' : '#000',
+            color: darkMode
+              ? theme.palette.primary.contrastText
+              : theme.palette.text.primary,
           }}
         >
           <Typography
@@ -116,7 +121,9 @@ const Country = () => {
                     fontWeight: 'bold',
                     fontSize: '32px',
                     marginBottom: '40px',
-                    color: darkMode ? '#fff' : '#000',
+                    color: darkMode
+                      ? theme.palette.primary.contrastText
+                      : theme.palette.text.primary,
 
                     '@media (max-width: 1024px)': {
                       fontSize: '22px',
@@ -128,7 +135,9 @@ const Country = () => {
                 <Typography
                   variant="h4"
                   sx={{
-                    color: darkMode ? '#fff' : '#000',
+                    color: darkMode
+                      ? theme.palette.primary.contrastText
+                      : theme.palette.text.primary,
                     marginBottom: '35px',
                     fontSize: '16px',
                     '@media (max-width: 1024px)': {
@@ -141,7 +150,9 @@ const Country = () => {
                 <Typography
                   variant="h4"
                   sx={{
-                    color: darkMode ? '#fff' : '#000',
+                    color: darkMode
+                      ? theme.palette.primary.contrastText
+                      : theme.palette.text.primary,
                     marginBottom: '35px',
                     fontSize: '16px',
                     '@media (max-width: 1024px)': {
@@ -154,7 +165,9 @@ const Country = () => {
                 <Typography
                   variant="h4"
                   sx={{
-                    color: darkMode ? '#fff' : '#000',
+                    color: darkMode
+                      ? theme.palette.primary.contrastText
+                      : theme.palette.text.primary,
                     marginBottom: '35px',
                     fontSize: '16px',
                     '@media (max-width: 1024px)': {
@@ -167,7 +180,9 @@ const Country = () => {
                 <Typography
                   variant="h4"
                   sx={{
-                    color: darkMode ? '#fff' : '#000',
+                    color: darkMode
+                      ? theme.palette.primary.contrastText
+                      : theme.palette.text.primary,
                     marginBottom: '35px',
                     fontSize: '16px',
                     '@media (max-width: 1024px)': {
@@ -181,7 +196,9 @@ const Country = () => {
                 <Typography
                   variant="h4"
                   sx={{
-                    color: darkMode ? '#fff' : '#000',
+                    color: darkMode
+                      ? theme.palette.primary.contrastText
+                      : theme.palette.text.primary,
                     fontSize: '16px',
                     '@media (max-width: 1024px)': {
                       fontSize: '14px',

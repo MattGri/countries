@@ -11,6 +11,7 @@ import {
   FormControl,
   MenuItem,
   TextField,
+  useTheme,
 } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { useSelector } from 'react-redux';
@@ -41,6 +42,7 @@ const Home = () => {
   const [selectedRegion, setSelectedRegion] = useState('');
 
   const darkMode = useSelector((state: RootState) => state.darkMode.darkMode);
+  const theme = useTheme();
 
   useEffect(() => {
     document.title = 'Where in the world?';
@@ -76,12 +78,16 @@ const Home = () => {
   return (
     <Box
       sx={{
-        backgroundColor: darkMode ? '#202c36' : '#fafafa',
+        backgroundColor: darkMode
+          ? theme.palette.primary.main
+          : theme.palette.background.default,
       }}
     >
       <Container
         sx={{
-          backgroundColor: darkMode ? '#202c36' : '#fafafa',
+          backgroundColor: darkMode
+            ? theme.palette.primary.main
+            : theme.palette.background.default,
         }}
       >
         <Box
@@ -97,20 +103,25 @@ const Home = () => {
             label="Search for a country..."
             InputLabelProps={{
               style: {
-                color: darkMode ? '#fff' : '#000',
+                color: darkMode
+                  ? theme.palette.primary.contrastText
+                  : theme.palette.text.primary,
               },
             }}
             InputProps={{
               style: {
-                color: darkMode ? '#fff' : '#000',
+                color: darkMode
+                  ? theme.palette.primary.contrastText
+                  : theme.palette.text.primary,
               },
             }}
             value={search}
             onChange={handleSearchChange}
             sx={{
               width: '255px',
-              backgroundColor: darkMode ? '#2b3844' : '#fff',
-
+              backgroundColor: darkMode
+                ? theme.palette.primary.main
+                : theme.palette.background.default,
               '@media (max-width: 425px)': {
                 marginBottom: '40px',
                 width: '100%',
@@ -124,7 +135,9 @@ const Home = () => {
           >
             <InputLabel
               sx={{
-                color: darkMode ? '#fff' : '#000',
+                color: darkMode
+                  ? theme.palette.primary.contrastText
+                  : theme.palette.text.primary,
               }}
             >
               Filter by region
@@ -134,16 +147,24 @@ const Home = () => {
               value={selectedRegion}
               onChange={handleRegionChange}
               sx={{
-                backgroundColor: darkMode ? '#2b3844' : '#fff',
+                backgroundColor: darkMode
+                  ? theme.palette.primary.main
+                  : theme.palette.background.default,
                 padding: '0px',
-                color: darkMode ? '#fff' : '#000',
+                color: darkMode
+                  ? theme.palette.primary.contrastText
+                  : theme.palette.text.primary,
               }}
             >
               <MenuItem
                 value={'Africa'}
                 sx={{
-                  backgroundColor: darkMode ? '#2b3844' : '#fff',
-                  color: darkMode ? '#fff' : '#000',
+                  backgroundColor: darkMode
+                    ? theme.palette.primary.main
+                    : theme.palette.background.default,
+                  color: darkMode
+                    ? theme.palette.primary.contrastText
+                    : theme.palette.text.primary,
                 }}
               >
                 Africa
@@ -151,8 +172,12 @@ const Home = () => {
               <MenuItem
                 value={'America'}
                 sx={{
-                  backgroundColor: darkMode ? '#2b3844' : '#fff',
-                  color: darkMode ? '#fff' : '#000',
+                  backgroundColor: darkMode
+                    ? theme.palette.primary.main
+                    : theme.palette.background.default,
+                  color: darkMode
+                    ? theme.palette.primary.contrastText
+                    : theme.palette.text.primary,
                 }}
               >
                 America
@@ -160,8 +185,12 @@ const Home = () => {
               <MenuItem
                 value={'Asia'}
                 sx={{
-                  backgroundColor: darkMode ? '#2b3844' : '#fff',
-                  color: darkMode ? '#fff' : '#000',
+                  backgroundColor: darkMode
+                    ? theme.palette.primary.main
+                    : theme.palette.background.default,
+                  color: darkMode
+                    ? theme.palette.primary.contrastText
+                    : theme.palette.text.primary,
                 }}
               >
                 Asia
@@ -169,8 +198,12 @@ const Home = () => {
               <MenuItem
                 value={'Europe'}
                 sx={{
-                  backgroundColor: darkMode ? '#2b3844' : '#fff',
-                  color: darkMode ? '#fff' : '#000',
+                  backgroundColor: darkMode
+                    ? theme.palette.primary.main
+                    : theme.palette.background.default,
+                  color: darkMode
+                    ? theme.palette.primary.contrastText
+                    : theme.palette.text.primary,
                 }}
               >
                 Europe
@@ -178,8 +211,12 @@ const Home = () => {
               <MenuItem
                 value={'Oceania'}
                 sx={{
-                  backgroundColor: darkMode ? '#2b3844' : '#fff',
-                  color: darkMode ? '#fff' : '#000',
+                  backgroundColor: darkMode
+                    ? theme.palette.primary.main
+                    : theme.palette.background.default,
+                  color: darkMode
+                    ? theme.palette.primary.contrastText
+                    : theme.palette.text.primary,
                 }}
               >
                 Oceania
@@ -217,7 +254,9 @@ const Home = () => {
                       sx={{
                         fontWeight: 'bold',
                         mb: '10px',
-                        color: darkMode ? '#fff' : '#000',
+                        color: darkMode
+                          ? theme.palette.primary.contrastText
+                          : theme.palette.text.primary,
                         fontSize: '18px',
                       }}
                     >
@@ -225,7 +264,9 @@ const Home = () => {
                     </Typography>
                     <Typography
                       sx={{
-                        color: darkMode ? '#fff' : '#000',
+                        color: darkMode
+                          ? theme.palette.primary.contrastText
+                          : theme.palette.text.primary,
                         fontSize: '14px',
                       }}
                     >
@@ -233,7 +274,9 @@ const Home = () => {
                     </Typography>
                     <Typography
                       sx={{
-                        color: darkMode ? '#fff' : '#000',
+                        color: darkMode
+                          ? theme.palette.primary.contrastText
+                          : theme.palette.text.primary,
                         fontSize: '14px',
                       }}
                     >
@@ -241,7 +284,9 @@ const Home = () => {
                     </Typography>
                     <Typography
                       sx={{
-                        color: darkMode ? '#fff' : '#000',
+                        color: darkMode
+                          ? theme.palette.primary.contrastText
+                          : theme.palette.text.primary,
                         fontSize: '14px',
                       }}
                     >
