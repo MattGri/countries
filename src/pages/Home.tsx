@@ -12,6 +12,8 @@ import {
   MenuItem,
   TextField,
   useTheme,
+  LinearProgress,
+  Pagination,
 } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { useSelector } from 'react-redux';
@@ -40,6 +42,16 @@ const Home = () => {
   const [search, setSearch] = useState('');
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [selectedRegion, setSelectedRegion] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+  const totalPages = Math.ceil(filteredCountries.length / itemsPerPage);
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
 
   const darkMode = useSelector((state: RootState) => state.darkMode.darkMode);
   const theme = useTheme();
@@ -50,6 +62,7 @@ const Home = () => {
     axios.get<Country[]>('https://restcountries.com/v3.1/all').then((res) => {
       setCountries(res.data);
       setFilteredCountries(res.data);
+      setLoading(false);
     });
   }, []);
 
@@ -225,6 +238,7 @@ const Home = () => {
           </FormControl>
         </Box>
         <Box>
+          {loading && <LinearProgress />}
           <ImageList
             cols={4}
             sx={{
@@ -234,69 +248,84 @@ const Home = () => {
               },
             }}
           >
-            {filteredCountries.map((country: Country) => (
-              <Link
-                to={`/country/${country.name.common}`}
-                style={{
-                  textDecoration: 'none',
-                }}
-              >
-                <ImageListItem key={country.name.common}>
-                  <img src={country.flags.png} alt="" />
-                  <Box
-                    sx={{
-                      padding: '15px 0px 25px 10px',
-                      borderRadius: '5px',
-                      backgroundColor: darkMode ? '#2b3844' : '#fff',
-                    }}
-                  >
-                    <Typography
+            {filteredCountries
+              .slice(
+                (currentPage - 1) * itemsPerPage,
+                currentPage * itemsPerPage
+              )
+              .map((country: Country) => (
+                <Link
+                  to={`/country/${country.name.common}`}
+                  style={{
+                    textDecoration: 'none',
+                  }}
+                >
+                  <ImageListItem key={country.name.common}>
+                    <img src={country.flags.png} alt="country flag" />
+                    <Box
                       sx={{
-                        fontWeight: 'bold',
-                        mb: '10px',
-                        color: darkMode
-                          ? theme.palette.primary.contrastText
-                          : theme.palette.text.primary,
-                        fontSize: '18px',
+                        padding: '15px 0px 25px 10px',
+                        borderRadius: '5px',
+                        backgroundColor: darkMode ? '#2b3844' : '#fff',
                       }}
                     >
-                      {country.name.common}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: darkMode
-                          ? theme.palette.primary.contrastText
-                          : theme.palette.text.primary,
-                        fontSize: '14px',
-                      }}
-                    >
-                      Population: {country.population}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: darkMode
-                          ? theme.palette.primary.contrastText
-                          : theme.palette.text.primary,
-                        fontSize: '14px',
-                      }}
-                    >
-                      Region: {country.region}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: darkMode
-                          ? theme.palette.primary.contrastText
-                          : theme.palette.text.primary,
-                        fontSize: '14px',
-                      }}
-                    >
-                      Capital: {country.capital}
-                    </Typography>
-                  </Box>
-                </ImageListItem>
-              </Link>
-            ))}
+                      <Typography
+                        sx={{
+                          fontWeight: 'bold',
+                          mb: '10px',
+                          color: darkMode
+                            ? theme.palette.primary.contrastText
+                            : theme.palette.text.primary,
+                          fontSize: '18px',
+                        }}
+                      >
+                        {country.name.common}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          color: darkMode
+                            ? theme.palette.primary.contrastText
+                            : theme.palette.text.primary,
+                          fontSize: '14px',
+                        }}
+                      >
+                        Population: {country.population}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          color: darkMode
+                            ? theme.palette.primary.contrastText
+                            : theme.palette.text.primary,
+                          fontSize: '14px',
+                        }}
+                      >
+                        Region: {country.region}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          color: darkMode
+                            ? theme.palette.primary.contrastText
+                            : theme.palette.text.primary,
+                          fontSize: '14px',
+                        }}
+                      >
+                        Capital: {country.capital}
+                      </Typography>
+                    </Box>
+                  </ImageListItem>
+                </Link>
+              ))}
           </ImageList>
+          <Pagination
+            count={totalPages}
+            color="primary"
+            onChange={handlePageChange}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          />
         </Box>
       </Container>
     </Box>

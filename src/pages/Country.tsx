@@ -81,7 +81,7 @@ const Country = () => {
             {country.flags && (
               <Avatar
                 src={country.flags.png}
-                alt=""
+                alt="country flag"
                 sx={{
                   width: '100%',
                   height: '482px',
