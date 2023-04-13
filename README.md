@@ -8,6 +8,12 @@ The application displays countries. You can search for a specific country or dis
 - Redux
 - MaterialUI
 
+# Installation 💾
+
+`git clone https://github.com/MattGri/countries.git`
+
+`npm install && npm start`
+
 # Screenshots 📺
 ![image](https://user-images.githubusercontent.com/61913031/230574499-8294b0a0-413e-411b-811c-b176c2916b44.png)
 ![image](https://user-images.githubusercontent.com/61913031/230574547-cd8472a9-d13f-4c1f-82d1-2cde5e5f00b6.png)
