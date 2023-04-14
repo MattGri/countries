@@ -33,10 +33,16 @@ const Country = () => {
           ? theme.palette.primary.main
           : theme.palette.background.default,
         height: '100vh',
+    
       }}
     >
       <Container
         sx={{
+          backgroundColor: darkMode
+            ? theme.palette.primary.main
+            : theme.palette.background.default,
+       
+
           '@media (max-width: 1024px)': {
             padding: '0px 20px',
             width: '60%',
@@ -94,7 +100,6 @@ const Country = () => {
                     height: 'auto',
                     marginBottom: '50px',
                   },
-
                   '@media (max-width: 425px)': {
                     marginBottom: '0px',
                   },
@@ -106,7 +111,6 @@ const Country = () => {
             sx={{
               marginTop: '25px',
               marginLeft: '120px',
-
               '@media (max-width: 1024px)': {
                 marginLeft: '0px',
                 marginTop: '50px',
@@ -192,7 +196,6 @@ const Country = () => {
                 >
                   Capital: {country.capital}
                 </Typography>
-
                 <Typography
                   variant="h4"
                   sx={{

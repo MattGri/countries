@@ -4,20 +4,15 @@ import {
   Box,
   Container,
   ImageList,
-  ImageListItem,
-  Typography,
-  InputLabel,
-  Select,
-  FormControl,
-  MenuItem,
-  TextField,
   useTheme,
   LinearProgress,
-  Pagination,
 } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import SearchBar from '../components/SearchBar';
+import Filter from '../components/Filter';
+import CountryCard from '../components/CountryCard';
+import PaginationWrapper from '../components/PaginationWrapper';
 
 interface Country {
   name: {
@@ -89,246 +84,74 @@ const Home = () => {
     setSelectedRegion(e.target.value);
   };
   return (
-    <Box
-      sx={{
-        backgroundColor: darkMode
-          ? theme.palette.primary.main
-          : theme.palette.background.default,
-      }}
-    >
-      <Container
+    <>
+      <Box
         sx={{
           backgroundColor: darkMode
             ? theme.palette.primary.main
             : theme.palette.background.default,
+          minHeight: '100vh',
         }}
       >
-        <Box
+        <Container
           sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            p: '25px 0px',
-            flexWrap: 'wrap',
+            backgroundColor: darkMode
+              ? theme.palette.primary.main
+              : theme.palette.background.default,
           }}
         >
-          <TextField
-            label="Search for a country..."
-            InputLabelProps={{
-              style: {
-                color: darkMode
-                  ? theme.palette.primary.contrastText
-                  : theme.palette.text.primary,
-              },
-            }}
-            InputProps={{
-              style: {
-                color: darkMode
-                  ? theme.palette.primary.contrastText
-                  : theme.palette.text.primary,
-              },
-            }}
-            value={search}
-            onChange={handleSearchChange}
-            sx={{
-              width: '255px',
-              backgroundColor: darkMode
-                ? theme.palette.primary.main
-                : theme.palette.background.default,
-              '@media (max-width: 425px)': {
-                marginBottom: '40px',
-                width: '100%',
-              },
-            }}
-          />
-          <FormControl
-            sx={{
-              width: '255px',
-            }}
-          >
-            <InputLabel
-              sx={{
-                color: darkMode
-                  ? theme.palette.primary.contrastText
-                  : theme.palette.text.primary,
-              }}
-            >
-              Filter by region
-            </InputLabel>
-            <Select
-              label="age"
-              value={selectedRegion}
-              onChange={handleRegionChange}
-              sx={{
-                backgroundColor: darkMode
-                  ? theme.palette.primary.main
-                  : theme.palette.background.default,
-                padding: '0px',
-                color: darkMode
-                  ? theme.palette.primary.contrastText
-                  : theme.palette.text.primary,
-              }}
-            >
-              <MenuItem
-                value={'Africa'}
-                sx={{
-                  backgroundColor: darkMode
-                    ? theme.palette.primary.main
-                    : theme.palette.background.default,
-                  color: darkMode
-                    ? theme.palette.primary.contrastText
-                    : theme.palette.text.primary,
-                }}
-              >
-                Africa
-              </MenuItem>
-              <MenuItem
-                value={'America'}
-                sx={{
-                  backgroundColor: darkMode
-                    ? theme.palette.primary.main
-                    : theme.palette.background.default,
-                  color: darkMode
-                    ? theme.palette.primary.contrastText
-                    : theme.palette.text.primary,
-                }}
-              >
-                America
-              </MenuItem>
-              <MenuItem
-                value={'Asia'}
-                sx={{
-                  backgroundColor: darkMode
-                    ? theme.palette.primary.main
-                    : theme.palette.background.default,
-                  color: darkMode
-                    ? theme.palette.primary.contrastText
-                    : theme.palette.text.primary,
-                }}
-              >
-                Asia
-              </MenuItem>
-              <MenuItem
-                value={'Europe'}
-                sx={{
-                  backgroundColor: darkMode
-                    ? theme.palette.primary.main
-                    : theme.palette.background.default,
-                  color: darkMode
-                    ? theme.palette.primary.contrastText
-                    : theme.palette.text.primary,
-                }}
-              >
-                Europe
-              </MenuItem>
-              <MenuItem
-                value={'Oceania'}
-                sx={{
-                  backgroundColor: darkMode
-                    ? theme.palette.primary.main
-                    : theme.palette.background.default,
-                  color: darkMode
-                    ? theme.palette.primary.contrastText
-                    : theme.palette.text.primary,
-                }}
-              >
-                Oceania
-              </MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <Box>
-          {loading && <LinearProgress />}
-          <ImageList
-            cols={4}
-            sx={{
-              '@media (max-width: 425px)': {
-                display: 'flex',
-                flexDirection: 'column',
-              },
-            }}
-          >
-            {filteredCountries
-              .slice(
-                (currentPage - 1) * itemsPerPage,
-                currentPage * itemsPerPage
-              )
-              .map((country: Country) => (
-                <Link
-                  to={`/country/${country.name.common}`}
-                  style={{
-                    textDecoration: 'none',
-                  }}
-                >
-                  <ImageListItem key={country.name.common}>
-                    <img src={country.flags.png} alt="country flag" />
-                    <Box
-                      sx={{
-                        padding: '15px 0px 25px 10px',
-                        borderRadius: '5px',
-                        backgroundColor: darkMode ? '#2b3844' : '#fff',
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          fontWeight: 'bold',
-                          mb: '10px',
-                          color: darkMode
-                            ? theme.palette.primary.contrastText
-                            : theme.palette.text.primary,
-                          fontSize: '18px',
-                        }}
-                      >
-                        {country.name.common}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: darkMode
-                            ? theme.palette.primary.contrastText
-                            : theme.palette.text.primary,
-                          fontSize: '14px',
-                        }}
-                      >
-                        Population: {country.population}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: darkMode
-                            ? theme.palette.primary.contrastText
-                            : theme.palette.text.primary,
-                          fontSize: '14px',
-                        }}
-                      >
-                        Region: {country.region}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: darkMode
-                            ? theme.palette.primary.contrastText
-                            : theme.palette.text.primary,
-                          fontSize: '14px',
-                        }}
-                      >
-                        Capital: {country.capital}
-                      </Typography>
-                    </Box>
-                  </ImageListItem>
-                </Link>
-              ))}
-          </ImageList>
-          <Pagination
-            count={totalPages}
-            color="primary"
-            onChange={handlePageChange}
+          <Box
             sx={{
               display: 'flex',
-              justifyContent: 'center',
+              justifyContent: 'space-between',
               alignItems: 'center',
+              p: '25px 0px',
+              flexWrap: 'wrap',
             }}
-          />
-        </Box>
-      </Container>
-    </Box>
+          >
+            <SearchBar
+              darkMode={darkMode}
+              search={search}
+              handleSearchChange={handleSearchChange}
+            />
+            <Filter
+              darkMode={darkMode}
+              selectedRegion={selectedRegion}
+              handleRegionChange={handleRegionChange}
+            />
+          </Box>
+          <Box>
+            {loading && <LinearProgress />}
+            <ImageList
+              cols={4}
+              sx={{
+                '@media (max-width: 425px)': {
+                  display: 'flex',
+                  flexDirection: 'column',
+                },
+              }}
+            >
+              {filteredCountries
+                .slice(
+                  (currentPage - 1) * itemsPerPage,
+                  currentPage * itemsPerPage
+                )
+                .map((country: Country) => (
+                  <CountryCard
+                    key={country.name.common}
+                    country={country}
+                    darkMode={darkMode}
+                  />
+                ))}
+            </ImageList>
+            <PaginationWrapper
+              totalPages={totalPages}
+              handlePageChange={handlePageChange}
+            />
+          </Box>
+        </Container>
+      </Box>
+    </>
   );
 };
 
