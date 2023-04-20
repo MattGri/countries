@@ -9,7 +9,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleDarkMode } from '../store';
+import { toggleDarkMode } from '../redux/darkMode/darkModeSlice';
 
 interface RootState {
   darkMode: {

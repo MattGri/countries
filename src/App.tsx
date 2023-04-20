@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Country from './pages/Country';
 import Header from './components/Header';
 import { Provider } from 'react-redux';
-import { store } from './store';
+import store from './redux/store';
 
 function App() {
   return (

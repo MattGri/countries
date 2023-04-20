@@ -1,4 +1,4 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const darkModeSlice = createSlice({
   name: 'darkMode',
@@ -14,8 +14,4 @@ const darkModeSlice = createSlice({
 
 export const { toggleDarkMode } = darkModeSlice.actions;
 
-export const store = configureStore({
-  reducer: {
-    darkMode: darkModeSlice.reducer,
-  },
-});
+export default darkModeSlice.reducer;
