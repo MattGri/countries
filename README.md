@@ -1,5 +1,5 @@
 # Project Overview 🎉
-The application displays countries. You can search for a specific country or display countries that are in a particular continent. Additionally, clicking on a specific country will display detailed information about that country.
+Country app, in which you can search for a country and see detailed information about it. You can also filter countries by region.
 
 # Technologies 🔧
 
@@ -15,11 +15,10 @@ The application displays countries. You can search for a specific country or dis
 `npm install && npm start`
 
 # Screenshots 📺
-![image](https://user-images.githubusercontent.com/61913031/230574499-8294b0a0-413e-411b-811c-b176c2916b44.png)
-![image](https://user-images.githubusercontent.com/61913031/230574547-cd8472a9-d13f-4c1f-82d1-2cde5e5f00b6.png)
-![image](https://user-images.githubusercontent.com/61913031/230574577-cf58a2f2-d575-49ca-8adb-e5783b7da469.png)
-![image](https://user-images.githubusercontent.com/61913031/230581489-8daa15f4-88fe-4008-b672-c27e5d9b9c17.png)
-
+![image](https://user-images.githubusercontent.com/61913031/232427645-2d279b55-ad83-470b-8cc2-eedb3a878c6e.png)
+![image](https://user-images.githubusercontent.com/61913031/232427665-46196d4a-c89d-4283-a920-02b75c328915.png)
+![image](https://user-images.githubusercontent.com/61913031/232427747-76d1879d-8c9a-4837-87cb-47de62e12489.png)
+![image](https://user-images.githubusercontent.com/61913031/232427794-540bd24c-1eba-4857-b993-206b73cfcc24.png)
 
 # Issues 🔍
 
