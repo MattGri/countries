@@ -6,6 +6,7 @@ import {
   ImageList,
   useTheme,
   LinearProgress,
+  Alert,
 } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { useSelector } from 'react-redux';
@@ -38,6 +39,7 @@ const Home = () => {
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [selectedRegion, setSelectedRegion] = useState('');
   const [loading, setLoading] = useState(true);
+  const [alert, setAlert] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
   const totalPages = Math.ceil(filteredCountries.length / itemsPerPage);
@@ -54,11 +56,17 @@ const Home = () => {
   useEffect(() => {
     document.title = 'Where in the world?';
 
-    axios.get<Country[]>('https://restcountries.com/v3.1/all').then((res) => {
-      setCountries(res.data);
-      setFilteredCountries(res.data);
-      setLoading(false);
-    });
+    axios
+      .get<Country[]>('https://restcountries.com/v3.1/all')
+      .then((res) => {
+        setCountries(res.data);
+        setFilteredCountries(res.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+        setAlert(true);
+      });
   }, []);
 
   useEffect(() => {
@@ -74,7 +82,12 @@ const Home = () => {
       .then((res) => {
         setFilteredCountries(res.data);
       });
-  }, [selectedRegion]);
+
+      const filteredCountries = countries.filter((country: Country) => {
+        return country.name.common.toLowerCase().includes(search.toLowerCase());
+      });
+      setFilteredCountries(filteredCountries);
+  }, [selectedRegion, countries, search]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -122,6 +135,7 @@ const Home = () => {
           </Box>
           <Box>
             {loading && <LinearProgress />}
+            {alert && <Alert severity="error">Something went wrong :(</Alert>}
             <ImageList
               cols={4}
               sx={{
