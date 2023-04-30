@@ -70,23 +70,16 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const filteredCountries = countries.filter((country: Country) => {
-      return country.name.common.toLowerCase().includes(search.toLowerCase());
-    });
-    setFilteredCountries(filteredCountries);
-  }, [countries, search]);
-
-  useEffect(() => {
     axios
       .get(`https://restcountries.com/v3.1/region/${selectedRegion}`)
       .then((res) => {
         setFilteredCountries(res.data);
       });
 
-      const filteredCountries = countries.filter((country: Country) => {
-        return country.name.common.toLowerCase().includes(search.toLowerCase());
-      });
-      setFilteredCountries(filteredCountries);
+    const filteredCountries = countries.filter((country: Country) => {
+      return country.name.common.toLowerCase().includes(search.toLowerCase());
+    });
+    setFilteredCountries(filteredCountries);
   }, [selectedRegion, countries, search]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
