@@ -10,11 +10,24 @@ interface RootState {
   };
 }
 
+interface ICountry {
+  name: {
+    common: string;
+  };
+  flags: {
+    png: string;
+  };
+  population: number;
+  region: string;
+  capital: string[];
+  tld: string[];
+  subregion: string;
+}
+
 const Country = () => {
   const { name } = useParams();
 
-  const [country, setCountry] = useState<any>([]);
-
+  const [country, setCountry] = useState({} as ICountry);
   const darkMode = useSelector((state: RootState) => state.darkMode.darkMode);
   const theme = useTheme();
 
@@ -33,7 +46,6 @@ const Country = () => {
           ? theme.palette.primary.main
           : theme.palette.background.default,
         height: '100vh',
-    
       }}
     >
       <Container
@@ -41,7 +53,6 @@ const Country = () => {
           backgroundColor: darkMode
             ? theme.palette.primary.main
             : theme.palette.background.default,
-       
 
           '@media (max-width: 1024px)': {
             padding: '0px 20px',
