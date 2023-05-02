@@ -1,4 +1,5 @@
 import React from 'react';
+import { SelectChangeEvent } from '@mui/material';
 import {
   FormControl,
   InputLabel,
@@ -10,7 +11,7 @@ import {
 interface FilterProps {
   darkMode: boolean;
   selectedRegion: string;
-  handleRegionChange: (e: any) => void;
+  handleRegionChange: (e: SelectChangeEvent) => void;
 }
 
 const Filter = ({

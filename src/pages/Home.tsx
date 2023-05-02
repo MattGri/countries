@@ -8,7 +8,7 @@ import {
   LinearProgress,
   Alert,
 } from '@mui/material';
-import { SelectChangeEvent } from '@mui/material/Select';
+import { SelectChangeEvent } from '@mui/material';
 import { useSelector } from 'react-redux';
 import SearchBar from '../components/SearchBar';
 import Filter from '../components/Filter';
