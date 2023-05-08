@@ -42,7 +42,7 @@ const Home = () => {
   const [alert, setAlert] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
-  const totalPages = Math.ceil(filteredCountries.length / itemsPerPage);
+  const totalPages = Math.ceil(countries.length / itemsPerPage);
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
@@ -60,7 +60,6 @@ const Home = () => {
       .get<Country[]>('https://restcountries.com/v3.1/all')
       .then((res) => {
         setCountries(res.data);
-        setFilteredCountries(res.data);
         setLoading(false);
       })
       .catch(() => {
