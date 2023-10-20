@@ -26,4 +26,4 @@ If you have any issues, please let me know on mateusz.grzybowski98@gmail.com
 
 # Live 📍
 
-You can visit website here: https://tiny-starship-51b4a5.netlify.app/
+You can visit website here: https://countries-app-project.netlify.app/
