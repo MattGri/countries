@@ -10,9 +10,9 @@ Country app, in which you can search for a country and see detailed information 
 
 # Installation 💾
 
-`git clone https://github.com/MattGri/countries.git`
-
-`npm install && npm start`
+1. Clone the repository `git clone https://github.com/MattGri/countries.git`
+2. Install dependencies `npm install`
+3. At the terminal run the command `npm start`
 
 # Screenshots 📺
 ![image](https://user-images.githubusercontent.com/61913031/232427645-2d279b55-ad83-470b-8cc2-eedb3a878c6e.png)
